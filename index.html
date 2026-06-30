@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Inventory Retur</title>
+    <title>Inventory</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
 
-<div class="container">
-    <h1>LOCATION INVENTORY</h1>
+<h1>LOCATION INVENTORY</h1>
 
-    <input id="searchBarcode" placeholder="Scan / Input Barcode">
-    <button onclick="searchData()">Cari</button>
+<input id="barcodeInput" placeholder="Scan / Input Barcode">
+<button onclick="searchItem()">Cari</button>
+<button onclick="scanCamera()">📷 Kamera</button>
 
-    <div class="card">
-        <div class="row"><span>LOKASI</span><span>:</span><span id="lokasi">-</span></div>
-        <div class="row"><span>BARCODE</span><span>:</span><span id="barcode">-</span></div>
-        <div class="row"><span>ITEM</span><span>:</span><span id="item">-</span></div>
-        <div class="row"><span>DESC</span><span>:</span><span id="desc">-</span></div>
-        <div class="row"><span>QTY</span><span>:</span><span id="qty">-</span></div>
-    </div>
+<div class="card">
+    <p>BARCODE : <span id="barcode">-</span></p>
+    <p>ITEM : <span id="item">-</span></p>
+    <p>DESC : <span id="desc">-</span></p>
+    <p>LOKASI : <span id="lokasi">-</span></p>
+    <p>QTY : <span id="qty">-</span></p>
+</div>
+
+<button onclick="updateQty(1)">+ Qty</button>
+<button onclick="updateQty(-1)">- Qty</button>
+
+<div id="reader"></div>
+
+<div id="addForm" style="display:none;">
+    <h3>Tambah Barang Baru</h3>
+    <input id="newItem" placeholder="Item"><br>
+    <input id="newDesc" placeholder="Desc"><br>
+    <input id="newLokasi" placeholder="Lokasi"><br>
+    <input id="newQty" placeholder="Qty"><br>
+    <button onclick="addItem()">Simpan</button>
 </div>
 
 <script src="script.js"></script>
